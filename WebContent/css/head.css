@@ -1,0 +1,63 @@
+/*默认样式清空*/
+*{
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    text-decoration: none;
+}
+html,body{
+    width: 100%;
+    height: 100px;
+}
+/*整体背景颜色*/
+.bg{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(to right, #869AF0, #DEE2FF, #869AF0);
+    position: relative;
+    border-radius: 0px 0px 10px 10px;
+}
+/*左边字体*/
+.bg .font{
+    font-weight: bold;
+    color: rgb(255, 245, 247);
+    user-select: none;
+    margin-left: 20px;
+}
+.bg .font p{
+    text-align: center;
+    font-size: 30px;
+    font-family: "宋体";
+}
+.bg .font span{
+    font-size: 18px;
+    letter-spacing: 5px;
+}
+/*右边用户信息*/
+.user{
+    position: absolute;
+    right: 40px;
+    display: flex;
+}
+.user .username{
+    font-size: 22px;
+    font-weight: bold;
+    color: rgb(255, 245, 247);
+    user-select: none;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.user .photo{
+    width: 80px;
+    height: 80px;
+    background: url("../img/u=396962276\,218417016&fm=30&app=106&f=JPEG.jfif") no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border: 1px solid rgb(255, 245, 247);
+    border-radius: 50%;
+    cursor: pointer;
+}

@@ -1,0 +1,58 @@
+/*默认样式清空*/
+*{
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    text-decoration: none;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+/*整体背景颜色*/
+.bg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom, #869AF0, #DEE2FF)
+}
+
+/*输入框*/
+.forgetBox{
+    position: relative;
+    width: 70%;
+    height: 70%;
+    background-color: rgba(248, 248, 255);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+}
+.question{
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.tittle{
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 100px;
+    letter-spacing: 10px;
+}
+
+/*根据屏幕尺寸修改界面*/
+@media all and (max-width:550px){
+    .bg{
+        display: none;
+    }
+    body::after{
+        content: "该屏幕尺寸不支持展示";
+        position: absolute;
+        top: 40%;
+        font-size: 10vw;
+    }
+}

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.wtbu.dao.UserDao">
+	<select id="login" resultType="hashmap">
+	SELECT user.id,username,role,IFNULL(photo,'') AS photo,company_id,company.`name` as companyName FROM `user` LEFT JOIN company ON `user`.company_id = company.id
+	WHERE username = #{username} AND `password` = #{password}
+	</select>
+	<select id="findUserByUsername" resultType="hashmap">
+	SELECT id,username,IFNULL(phone,"") AS phone,IFNULL(verify_question,"") AS verify_question ,IFNULL(verify_answer,"") AS verify_answer 
+	FROM `user` WHERE username =  #{username}
+	</select>
+	<select id="findUserById" resultType="hashmap">
+	SELECT user.id,username,`password`,IFNULL(user.`name`,'') AS `name`,sex,IFNULL(phone,'') AS phone,role,IFNULL(photo,'') AS photo,company_id,company.`name` AS company_name
+	FROM `user` LEFT JOIN company ON `user`.company_id = company.id
+	WHERE user.id = #{id}
+	</select>
+	<select id="findUserByPhone" resultType="hashmap">
+	SELECT * FROM `user` WHERE phone = #{phone} and phone is not null
+	</select>
+	<select id="getAllUser" resultType="hashmap">
+	SELECT user.id,username,`password`,IFNULL(user.`name`,'') AS `name`,sex,IFNULL(phone,'') AS phone,role,IFNULL(photo,'') AS photo,company_id,company.`name` AS company_name
+	FROM `user` LEFT JOIN company ON `user`.company_id = company.id
+	WHERE `user`.company_id = #{companyid} AND username LIKE #{name} LIMIT #{startPage},#{pageSize}
+	</select>
+	<select id="getAllUserCount" resultType="int">
+	SELECT COUNT(*) as total FROM `user` WHERE `user`.company_id = #{companyid} AND username LIKE #{name}
+	</select>
+	<select id="getAllUserName" resultType="hashmap">
+	SELECT id,username FROM `user` WHERE company_id = #{Companyid}
+	</select>
+	
+	<insert id="addUser">
+	INSERT INTO 
+	`USER`(username,password,name,sex,phone,role,photo,company_id,create_time) 
+	VALUES(#{username},#{password},#{name},#{sex},#{phone},#{role},#{photo},#{company_id},#{createTime})
+	</insert>
+	
+	<update id="updateUser">
+	UPDATE `user` 
+	SET username = #{username},`name` = #{name},sex = #{sex},phone = #{phone},photo = #{photo}
+	WHERE id = #{id}
+	</update>
+	<update id="updateRole">
+	UPDATE `user` SET role = #{role} WHERE id = #{id}
+	</update>
+	<update id="updateRoleByCompany">
+	UPDATE `user` SET role = 2,company_id = 1 WHERE company_id = #{companyId}
+	</update>
+	<update id="updatePassword">
+	UPDATE `user` 
+	SET `password` = #{password}
+	WHERE id = #{id}
+	</update>
+	<update id="updatePasswordQustion">
+	UPDATE `user`
+	SET phone = #{phone},verify_question = #{question}, verify_answer = #{answer}
+	WHERE id = #{id}
+	</update>
+	
+	<delete id="deleteUser">
+	DELETE FROM `user` WHERE id = #{id}
+	</delete>
+	
+	
+</mapper>

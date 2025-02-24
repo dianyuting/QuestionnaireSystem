@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>左边</title>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <style type="text/css">
+        /*默认样式清空*/
+        *{
+            margin: 0px;
+            padding: 0px;
+            list-style-type: none;
+            text-decoration: none;
+        }
+        html,body{
+            width: 200px;
+            height: 100%;
+        }
+        /*整体背景颜色*/
+        .bg{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 40px;
+            height: calc(100% - 150px);
+            margin: 50px 0px;
+            border-radius: 5px 60px 30px 60px;
+            width: calc(100% - 10px);
+            background-image: linear-gradient(to bottom, #869AF0, #DEE2FF);
+            position: relative;
+            padding-top: 50px;
+            box-shadow: 5px 5px 5px rgb(117, 124, 158);
+        }
+        a{
+            display: block;
+            width: 90%;
+            height: 50px;
+            background-image: radial-gradient(#869AF0,#DEE2FF);
+            border-radius: 0px 10px 10px 0px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 50px;
+            font-size: 22px;
+            font-family: "宋体";
+            color: #6753cb;
+            user-select: none;
+        }
+        /* a标签鼠标悬浮样式 */
+        a:hover{
+            background-image: radial-gradient(#bbc1ef,#657ce3);
+            color: mintcream;
+            box-shadow: 2px 2px 5px;
+        }
+        /* 选中样式 */
+        .have{
+            background-image: radial-gradient(#bbc1ef,#657ce3);
+            color: mintcream;
+            box-shadow: 2px 2px 5px;
+        }
+    </style>
+    <script src="./js/no.js"></script>
+</head>
+<body>
+    <div class="bg">
+        <!-- 关联右边的frame，点击a标签在右边name为right的位置打开标签href路径的窗口 -->
+        <a class="have" href="./questionnaire.html" target="right">问卷列表</a>
+        <a href="./questions.html" target="right">题库管理</a>
+        <a href="./employee.html" target="right">员工管理</a>
+        <a href="./account.html" target="right">账号安全</a>
+        <a href="" target="right">退出登录</a>
+    </div>
+    <script>
+        // 记录当时选中的a标签
+        var prior = $("a[href = './questionnaire.html']");
+        // 管理员才有员工管理按钮
+        try{
+            var userStr = localStorage.getItem("user");
+            var user = JSON.parse(userStr);
+            if(user.role != 1){
+                $("a[href='./employee.html']").css("display","none");
+            }
+        }catch{
+    
+        }
+        $("a").eq(0).click(c);
+        $("a").eq(1).click(c);
+        $("a").eq(2).click(c);
+        $("a").eq(3).click(c);
+        $("a").eq(4).click(function(){
+            localStorage.setItem("user","");
+            window.top.location.href = "./index.html";
+        })
+        // 切换选中的标签
+        function c(){
+            $(this).addClass("have");
+            prior.removeClass("have");
+            prior = $(this);
+        }
+    </script>
+</body>
+</html>

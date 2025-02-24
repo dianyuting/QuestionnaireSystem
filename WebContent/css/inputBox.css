@@ -1,0 +1,41 @@
+/*用户名和密码输入框样式设置*/
+.inputBox{
+    position: relative;
+    width: 300px;
+}
+.inputBox input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgb(112, 128, 144);
+    background: rgba(248, 248, 255);
+    border-radius: 5px;
+    outline: none;
+    color: rgb(112, 128, 144);
+    font-size: 16px;
+}
+/*用户名和密码输入框文本样式设置*/
+.inputBox span{
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 10px;
+    /*虚化元素，禁止鼠标事件*/
+    pointer-events: none;
+    /*文字大小*/
+    text-transform: uppercase;
+    /*下一效果的过渡时间，类似简短的动画效果*/
+    transition: .5s;
+}
+/*设置输入框获得焦点或输入正确时，文本改变位置及样式*/
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span{
+    transform: translateX(10px) translateY(-7px);
+    font-size: 12px;
+    color: rgb(51, 129, 206);
+    padding: 0 10px;
+    background: rgba(248, 248, 255);
+    border-left: 1px solid rgb(51, 129, 206);
+    border-right: 1px solid rgb(51, 129, 206);
+    /*字符间距*/
+    letter-spacing: 4px;
+}

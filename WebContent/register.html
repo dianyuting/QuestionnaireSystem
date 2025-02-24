@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>账号注册</title>
+    <link rel="stylesheet" href="./css/pop-up.css">
+    <link rel="stylesheet" href="./css/inputBox.css">
+    <link rel="stylesheet" href="./css/btnStyle.css">
+    <link rel="stylesheet" href="./css/register.css"/>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/register.js"></script>
+    <script src="./js/randomUser.js"></script>
+</head>
+<body>
+    <div class="bg">
+        <div class="registerBox">
+            <div class="sltphoto">
+                <div class="sltbutton">
+                    <input id="upload-input" type="file" accept="image/jpeg, image/jpg, image/png" />
+                    <div style="text-align: top">
+                        <img class="photo" id="upload" src="./img/2020-02-25_121944.png" style="width: 120px; height: 160px; vertical-align: middle;" />  
+                        <p class="selttext">选择头像</p>                    
+                    </div>
+                </div>
+            </div>
+            <div class="inputBox">
+                <input type="text" class="username" required/>
+                <span><font class="emp">*</font> 用户名</span>
+            </div>
+            <div class="inputBox">
+                <input type="password" class="password" required/>
+                <span><font class="emp">*</font>密码</span>
+            </div>
+            <div class="inputBox">
+                <input type="password" class="confirmPassword" required/>
+                <span><font class="emp">*</font>确认密码</span>
+            </div>
+            <div class="inputBox">
+                <input type="text" class="name" required/>
+                <span>姓名</span>
+            </div>
+            <div class="inputBox">
+                <input type="text" onkeyup="value=value.replace(/[^\d\-\d]/g,'')" maxlength="20" class="phone" required/>
+                <span>手机号</span>
+            </div>
+            <div class="inputBox">
+                <input type="text" class="company" required/>
+                <span>公司</span>
+                <font style="color: gray; font-size: 11px;user-select: none;">新公司则用户权限为管理员</font>
+            </div>
+            <div class="roleBox">
+                性别:
+                <div><input type="radio" name="sex" value="1"/>男</div>
+                <div><input type="radio" name="sex" value="2"/>女</div>
+            </div>
+            <div class="roleBox">
+                <font class="emp">*</font>权限:
+                <div><input type="radio" name="role" value="2" checked disabled/>问卷编辑</div>
+                <div><input type="radio" name="role" value="3" disabled/>问卷分析</div>
+            </div>
+            <div class="btn">
+                <button class="submit">提交</button>
+                <button class="cancel">取消</button>
+            </div>
+        </div>
+        <!-- 随机用户名遮罩层，用户名重复时显示 -->
+        <div id="pop-up">
+            <div class="main">
+                <p>用户名重复</p>
+                <div class="randomName"></div>
+                <div class="btnBox">
+                    <button class="startRandom">生成随机用户名</button>
+                    <button class="copy">复制</button>
+                    <button class="ok">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

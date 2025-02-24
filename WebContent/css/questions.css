@@ -1,0 +1,66 @@
+/* 遮罩层，问题预览 */
+#pop-up{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,.65);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    z-index: 30;
+    display: none;
+}
+#pop-up .main{
+    width: 33%;
+    height: 30%;
+    background: #ebedf6;
+    box-shadow: 5px 5px 5px rgb(117, 124, 158);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+#pop-up .main p{
+    font-size: 22px;
+    font-style: "宋体";
+    font-weight: bold;
+    margin: 10px auto;
+    text-align: center;
+}
+#pop-up .main div{
+    text-align: center;
+}
+/* 滑动条设置 */
+.inputBox{
+    display: flex;
+    align-items: center;
+}
+input[type="range"]{
+    display: block;
+    background-color: #bdc3c7;
+    width: 150px;
+    height: 5px;
+    border-radius: 5px;
+    outline: 0;
+}
+input[type="range"]::-webkit-slider-thumb{
+    background-color: #49a9ee;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+input[type="range"]::-webkit-slider-thumb:hover{
+    background-color: white;
+    border: 2px solid #49a9ee;
+}
+input[type="range"]::-webkit-slider-thumb:active{
+    transform: scale(1.6);
+}

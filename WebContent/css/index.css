@@ -1,0 +1,155 @@
+/*默认样式清空*/
+*{
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    text-decoration: none;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+/*整体背景颜色*/
+.bg{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-color: #869AF0;
+}
+/*动画效果*/
+@keyframes font1{
+    from{width: 0%;}
+    to{width: 100%;}
+}
+@keyframes font2{
+    from{width: 0%;}
+    to{width: 100%;}
+}
+
+.bg p{
+    /*设置文本隐藏溢出、强制不换行*/
+    overflow: hidden;
+    white-space: nowrap;
+    /*设置字体大小随视宽变化，字体加粗、颜色（渐变背景，文字透明，用文本剪辑背景）、幼圆、不可选中*/
+    font-size: 7vw;
+    font-weight: bold;
+    background: -webkit-linear-gradient(top, rgb(255, 245, 247) 50%, rgb(237,222,139));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-family: youyuan;
+    user-select: none;
+}
+/*设置文字位置，动画播名称、时长、动画步数、延时、停留至最后一帧*/
+.bg .font1{
+    position: relative;
+    bottom: 40px;
+    animation: font1 3s steps(60) forwards;
+}
+.bg .font2{
+    position: relative;
+    left: 60px;
+    bottom: 40px;
+    width: 0%;
+    animation: font2 3s steps(60) 3s forwards;
+}
+/*文字下方黄色背景图，设置毛玻璃效果*/
+.bg .fontBg{
+    background-color: rgba(251, 179, 23, 0.65);
+    backdrop-filter: blur(10px);
+    margin-top: 10%;
+}
+/*设置下方人物图片*/
+.bg .img{
+    width: 60%;
+    height: 100%;
+    background: url("../img/u=396962276,218417016&fm=30&app=106&f=JPEG.jfif") no-repeat;
+    background-size: contain;
+    background-position: bottom;
+    
+}
+/*设置右边登录背景*/
+.bg .loginBg{
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to right, #869AF0, #DEE2FF);
+    /*纵向布局，使输入框整体居中显示*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*整体输入框设置*/
+.loginBg fieldset{
+    position: relative;
+    /*纵向布局，居中显示*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*拉开纵向间距*/
+    gap: 30px;
+    /*背景、边框、字体、大小*/
+    background: rgba(248, 248, 255);
+    border: 4px outset white;
+    border-radius: 5px;
+    font-size: 18px;
+    color: rgb(112, 128, 144);
+    width: 500px;
+    padding: 60px 25px;
+}
+/*整体输入框内的图片设置*/
+.loginBg fieldset img{
+    height: 200px;
+    width: 200px;
+    pointer-events: none;
+    position: absolute;
+    right: 10px;
+    bottom: 20px;
+    user-select: none;
+}
+
+
+
+/*按钮*/
+/*设置按钮不被图片遮挡*/
+.loginBg .btn{
+    z-index: 3;
+}
+
+/*下方文字样式设置*/
+.loginBg .other{
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    color: rgb(51, 129, 206);
+    font-size: 16px;
+    z-index: 3;
+}
+.loginBg .other span{
+    text-decoration: underline rgb(51, 129, 206) solid;
+    cursor: pointer;
+    margin: 0 6px;
+}
+
+
+/*根据屏幕尺寸修改界面*/
+@media all and (max-width:1200px) and (min-width:600px){
+    .bg .img{
+        display: none;
+    }
+    .bg .loginBg{
+        width: 100%;
+    }
+}
+@media all and (max-width:600px){
+    .bg{
+        display: none;
+    }
+    body::after{
+        content: "该屏幕尺寸不支持展示";
+        position: absolute;
+        top: 40%;
+        font-size: 10vw;
+    }
+}

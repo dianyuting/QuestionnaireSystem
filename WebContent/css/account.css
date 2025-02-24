@@ -1,0 +1,58 @@
+/* 背景样式 */
+.bg div{
+    background-image: radial-gradient(#869AF0,#DEE2FF);
+    border-radius: 25px;
+    box-shadow: 2px 2px 5px rgb(117, 124, 158);
+    font-family: '宋体';
+    padding: 25px;
+    font-weight: bold;
+    font-size: 30px;
+    color: white;
+    text-decoration: blink;
+    user-select: none;
+    cursor: pointer;
+}
+/* 遮罩层样式 */
+.pu{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,.65);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    z-index: 30;
+    display: none;
+}
+.pu .main{
+    width: 33%;
+    height: 30%;
+    background: #ebedf6;
+    box-shadow: 5px 5px 5px rgb(117, 124, 158);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.pu .main p{
+    font-size: 22px;
+    font-style: "宋体";
+    font-weight: bold;
+    margin: 10px auto;
+    text-align: center;
+}
+.pu .main div{
+    text-align: center;
+}
+.inputBox input{
+    background: none;
+}
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span{
+    background: #ebedf6;
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.wtbu.dao.QuestionsDao">
+
+	<select id="getAllQuestionsByType" resultType="hashmap">
+	SELECT id,question,question_types_id,IFNULL(question_options,'') AS question_options,create_time FROM questions
+	WHERE question_types_id = #{questionTypeId} AND question LIKE #{questionName} LIMIT #{startPage},#{pageSize}
+	</select>
+	<select id="getAllQuestions" resultType="hashmap">
+	SELECT id,question,question_types_id,IFNULL(question_options,'') AS question_options,create_time FROM questions
+	WHERE question LIKE #{questionName} LIMIT #{startPage},#{pageSize}
+	</select>
+	<select id="getAllQuestionsCountByType" resultType="int">
+	SELECT COUNT(*) as total FROM questions
+	WHERE question_types_id = #{questionTypeId} AND question LIKE #{questionName}
+	</select>
+	<select id="getAllQuestionsCount" resultType="int">
+	SELECT COUNT(*) as total FROM questions
+	WHERE question LIKE #{questionName}
+	</select>
+	<select id="getQuestionById" resultType="hashmap">
+	SELECT id,question,question_types_id,IFNULL(question_options,'') AS question_options,create_time FROM questions
+	WHERE id = #{id}
+	</select>
+	<select id="getQuestionsType" resultType="hashmap">
+	SELECT * FROM question_types
+	</select>
+	
+	
+	<insert id="addQuestions">
+	INSERT INTO questions(question,question_types_id,question_options,create_time) VALUES(#{question},#{question_types_id},#{question_options},#{create_time})
+	</insert>
+	
+
+</mapper>

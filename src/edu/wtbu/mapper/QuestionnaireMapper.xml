@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.wtbu.dao.QuestionnaireDao">
+	<select id="getAllQuestionnaire" resultType="hashmap">
+	SELECT questionnaire_distribution.id,questionnaire_distribution.start_date,questionnaire_distribution.end_date,
+	questionnaire_distribution.create_time,questionnaire.questionnaire_name,questionnaire.uid,questionnaire_distribution.questionnaire_id
+	FROM questionnaire_distribution 
+	LEFT JOIN questionnaire ON questionnaire_distribution.questionnaire_id = questionnaire.id
+	LEFT JOIN `user` ON questionnaire.uid = `user`.id
+	WHERE `user`.company_id = #{companyId} AND questionnaire_name LIKE #{name} LIMIT #{startPage},#{pageSize}
+	</select>
+	<select id="getAllQuestionnaireCount" resultType="int">
+	SELECT COUNT(*) as total
+	FROM questionnaire_distribution 
+	LEFT JOIN questionnaire ON questionnaire_distribution.questionnaire_id = questionnaire.id
+	LEFT JOIN `user` ON questionnaire.uid = `user`.id
+	WHERE `user`.company_id = #{companyId} AND questionnaire_name LIKE #{name}
+	</select>
+	<select id="getAllQuestionnaireByUserId" resultType="hashmap">
+	SELECT questionnaire_distribution.id,questionnaire_distribution.start_date,questionnaire_distribution.end_date,
+	questionnaire_distribution.create_time,questionnaire.questionnaire_name,IFNULL(questionnaire.uid,0) AS uid,questionnaire_distribution.questionnaire_id
+	FROM questionnaire_distribution 
+	LEFT JOIN questionnaire ON questionnaire_distribution.questionnaire_id = questionnaire.id
+	LEFT JOIN `user` ON questionnaire.uid = `user`.id
+	WHERE `user`.company_id = #{companyId} AND uid = #{uid} and questionnaire_name LIKE #{name} LIMIT #{startPage},#{pageSize}
+	</select>
+	<select id="getAllQuestionnaireByUserIdCount" resultType="int">
+	SELECT COUNT(*) as total
+	FROM questionnaire_distribution 
+	LEFT JOIN questionnaire ON questionnaire_distribution.questionnaire_id = questionnaire.id
+	LEFT JOIN `user` ON questionnaire.uid = `user`.id
+	WHERE `user`.company_id = #{companyId} AND uid = #{uid} and questionnaire_name LIKE #{name}
+	</select>
+	<select id="getAllQuestionnaireByName" resultType="hashmap">
+	SELECT questionnaire_distribution.id,questionnaire_distribution.start_date,questionnaire_distribution.end_date,
+	questionnaire_distribution.create_time,questionnaire.questionnaire_name,questionnaire.uid,questionnaire_distribution.questionnaire_id
+	FROM questionnaire_distribution 
+	LEFT JOIN questionnaire ON questionnaire_distribution.questionnaire_id = questionnaire.id
+	WHERE questionnaire.uid = #{uid} AND questionnaire_name LIKE #{name} LIMIT #{startPage},#{pageSize}
+	</select>
+	<select id="getAllQuestionnaireByNameCount" resultType="int">
+	SELECT COUNT(*) as total
+	FROM questionnaire_distribution 
+	LEFT JOIN questionnaire ON questionnaire_distribution.questionnaire_id = questionnaire.id
+	WHERE questionnaire.uid = #{uid} AND questionnaire_name LIKE #{name}
+	</select>
+	<select id="getQuestionnaireQuestionById" resultType="hashmap">
+	SELECT rel.id,rel.sequence,questions.question,questions.question_types_id,questions.question_options,questionnaire.questionnaire_name FROM rel 
+	LEFT JOIN questionnaire ON rel.questionnaire_id = questionnaire.id
+	LEFT JOIN questions ON rel.question_id = questions.id
+	LEFT JOIN questionnaire_distribution ON questionnaire_distribution.questionnaire_id = questionnaire.id
+	WHERE questionnaire_distribution.id = #{id}
+	</select>
+	<select id="getQuestionnaireByName" resultType="hashmap">
+	SELECT * FROM questionnaire WHERE questionnaire_name = #{name}
+	</select>
+	<select id="getCountByQuestionnaireDistributionId" resultType="hashmap">
+	SELECT total FROM questionnaire_distribution
+	INNER JOIN (SELECT questionnaire_id AS zid,COUNT(*) as total FROM questionnaire_distribution GROUP BY questionnaire_id) as a ON a.zid = questionnaire_distribution.questionnaire_id
+	WHERE id = #{id}
+	</select>
+	
+	<select id="getQuestionnaireIdByDistributionId" resultType="int">
+	SELECT questionnaire_id FROM questionnaire_distribution
+	WHERE id = #{id}
+	</select>
+	<select id="getDistributionIdByDate" resultType="hashMap">
+	SELECT questionnaire_distribution.id FROM questionnaire_distribution
+	LEFT JOIN questionnaire ON questionnaire_distribution.questionnaire_id = questionnaire.id
+	WHERE questionnaire_id = #{questionnaireId} AND start_date BETWEEN #{startDate} AND #{endDate} AND end_date BETWEEN #{startDate} AND #{endDate}
+	</select>
+	<select id="getQuestionnaireIdByUserId" resultType="hashMap">
+	SELECT id FROM questionnaire
+	WHERE uid = #{id}
+	</select>
+	
+	
+	<insert id="addQuestionnaire">
+	INSERT INTO questionnaire(questionnaire_name,uid,create_time) VALUES(#{questionnaireName},#{uid},#{createTime})
+	</insert>
+	<insert id="addQuestionnaireRel">
+	INSERT INTO rel(questionnaire_id,question_id,sequence) VALUES(#{questionnaireId},#{questionId},#{sequence})
+	</insert>
+	<insert id="addQuestionnaireDistribution">
+	INSERT INTO questionnaire_distribution(questionnaire_id,start_date,end_date,create_time) VALUES(#{questionnaireId},#{startDate},#{endDate},#{createTime})
+	</insert>
+	
+	<delete id="deletRel">
+	DELETE rel FROM rel
+	WHERE questionnaire_id = #{id}
+	</delete>
+	<delete id="deletQuestionnaire">
+	DELETE questionnaire FROM questionnaire
+	WHERE id = #{id}
+	</delete>
+	<delete id="deletQuestionnaireDistribution">
+	DELETE questionnaire_distribution FROM questionnaire_distribution
+	WHERE questionnaire_distribution.id = #{id}
+	</delete>
+	<delete id="deletDistributionByQuestionnaireId">
+	DELETE questionnaire_distribution FROM questionnaire_distribution
+	WHERE questionnaire_id = #{id}
+	</delete>
+</mapper>

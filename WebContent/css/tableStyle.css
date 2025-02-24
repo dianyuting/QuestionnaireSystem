@@ -1,0 +1,79 @@
+/* 顶部操作样式 */
+.top{
+    width: 80%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 18px;
+    font-family: "宋体";
+    border-radius: 15px;
+    background-color: rgba(255,255,255,0.6);
+    border: 1px solid black;
+    user-select: none;
+}
+.inputBox input{
+    font-size: 18px;
+    height: 25px;
+    width: 200px;
+}
+.selectBox select{
+    width: 150px;
+    height: 30px;
+}
+/* 表格样式 */
+.tb{
+    width: 80%;
+    border-radius: 20px;
+    background-color: rgba(255,255,255,0.6);
+    border: 1px solid black;
+}
+.tb tr{
+    height: 50px;
+    text-align: center;
+    font-family: "宋体";
+    font-size: 18px;
+}
+button{
+    width: 70px;
+    height: 40px;
+    border-radius: 15px;
+    background-color: rgba(255,255,255,0.6);
+    border: 1px solid black;
+    cursor: pointer;
+    margin: 0 5px;
+}
+/* 底部页面切换样式 */
+.foot{
+    display: flex;
+    border-radius: 15px;
+    background-color: rgba(255,255,255,0.6);
+    border: 1px solid black;
+    width: 80%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+.page{
+    margin-left: 20px;
+    display: flex;
+    font-size: 18px;
+}
+.page .prev{
+    height: 30px;
+    margin: 0 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 22px;
+}
+.page .pageSelect{
+    height: 30px;
+    width: 80px;
+}
+.foot .totalpage{
+    height: 30px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}

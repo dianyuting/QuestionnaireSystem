@@ -1,0 +1,176 @@
+/*默认样式清空*/
+*{
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    text-decoration: none;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+/*整体背景颜色*/
+.bg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom, #869AF0, #DEE2FF)
+}
+.mainBox{
+    position: relative;
+    width: 70%;
+    height: 70%;
+    background-color: rgba(248, 248, 255);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:25px;
+}
+
+.p{
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255,255,255,.65);
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    display: none;
+}
+.fb{
+    width: 33%;
+    height: 30%;
+    background: #ebedf6;
+    box-shadow: 5px 5px 5px rgb(117, 124, 158);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    display: none;
+}
+
+.show{
+    width: 90%;
+    height: calc(100% - 200px);
+    overflow: auto;
+}
+.show p{
+    margin: 5px auto;
+}
+.show div,.show button{
+    margin: 5px 0px;
+}
+.answersBox{
+    width: 80%;
+    height: 80%;
+    position: relative;
+    left: 10%;
+    top: 10%;
+}
+.bBox{
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+}
+.answersBox ul{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    overflow: hidden;
+}
+.answersBox ul li{
+    height: 90%;
+    border: 1px solid rgba(0, 0, 0, 0.42);
+    transition: all 1s;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+.answer{
+    width: calc(100% - 40px);
+    min-width: 200px;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding:0px 20px;
+    font-family: "宋体";
+    font-size: 16px;
+}
+.answer div{
+    margin: 10px auto;
+}
+
+/* 对比分析 */
+table tr td{
+    padding: 5px;
+    border-bottom: 1px solid black;
+}
+/* 交叉分析 */
+.crossAnalysisBox{
+    margin: 0 auto;
+}
+.crossAnalysisBox .xiexian div{
+    width: 100%;
+    height: 50%;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.crossAnalysisBox tr td{
+    display: inline-block;
+    min-width: 50px;
+    min-height: 50px;
+    text-align: center;
+    border: 1px solid black;
+}
+.crossAnalysisBox .xiexian{
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    background: linear-gradient(to top right,white 49%,black 49%,black 51%,white 51%);
+}
+
+/* 底部翻页按钮样式 */
+.foot{
+    display: flex;
+    border-radius: 15px;
+    background-color: rgba(255,255,255,0.6);
+    border: 1px solid black;
+    width: 80%;
+    height: 80px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    user-select: none;
+    position: absolute;
+    bottom: 50px;
+    display: none;
+}
+.page{
+    margin-left: 20px;
+    display: flex;
+    font-size: 18px;
+}
+.page .prev{
+    height: 30px;
+    margin: 0 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 22px;
+}
+.page .pageSelect{
+    height: 30px;
+    width: 80px;
+}

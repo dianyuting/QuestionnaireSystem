@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.wtbu.dao.AnswersDao">
+	<select id="getAnswersByDistributionId" resultType="hashmap">
+	SELECT answers.id,respondent_id,rel.sequence,question,question_types_id,question_options,respondent_answer,answers.questionnaire_distribution_id FROM answers
+	LEFT JOIN rel ON rel.id = answers.rel_id
+	LEFT JOIN questions ON rel.question_id = questions.id
+	WHERE questionnaire_distribution_id = #{distributionId} AND question_types_id != 4
+	</select>
+	<select id="comparativeAnalysis" resultType="hashmap">
+	SELECT answers.respondent_id,
+	answers.questionnaire_distribution_id,
+	questionnaire_distribution.end_date,
+	questionnaire_distribution.start_date,
+	questionnaire.questionnaire_name,
+	answers.respondent_answer,
+	questions.id,
+	questions.question,
+	questions.question_options,
+	questions.question_types_id,
+	rel.sequence FROM questionnaire_distribution 
+	LEFT JOIN answers ON answers.questionnaire_distribution_id = questionnaire_distribution.id
+	LEFT JOIN rel ON rel.id = answers.rel_id
+	LEFT JOIN questions ON questions.id = rel.question_id
+	LEFT JOIN questionnaire ON questionnaire.id = rel.questionnaire_id
+	INNER JOIN (
+	SELECT questions.id,questions.question,questions.question_options,questions.question_types_id,rel.sequence FROM rel 
+		LEFT JOIN questions ON questions.id = rel.question_id
+		LEFT JOIN questionnaire_distribution ON questionnaire_distribution.questionnaire_id = rel.questionnaire_id
+		INNER JOIN(
+		SELECT questions.id,questions.question,questions.question_options,questions.question_types_id,rel.sequence FROM rel 
+			LEFT JOIN questions ON questions.id = rel.question_id
+			LEFT JOIN questionnaire_distribution ON questionnaire_distribution.questionnaire_id = rel.questionnaire_id
+			WHERE questionnaire_distribution.id = #{distributionId1}
+		)AS q ON q.id = questions.id
+		WHERE questionnaire_distribution.id = #{distributionId2}
+	)AS q2 on q2.id = questions.id
+	WHERE questionnaire_distribution.id = #{distributionId2} OR questionnaire_distribution.id = #{distributionId1}
+	
+	</select>
+	<select id="crossAnalysis" resultType="hashmap">
+	SELECT answers.id,respondent_id,rel.sequence,question,question_types_id,question_options,respondent_answer,answers.questionnaire_distribution_id FROM answers
+	LEFT JOIN rel ON rel.id = answers.rel_id
+	LEFT JOIN questions ON rel.question_id = questions.id
+	WHERE questionnaire_distribution_id = #{distributionId} AND (rel.id = #{relId1} OR rel.id = #{relId2}) AND question_types_id != 4
+	</select>
+	
+	<select id="getAllAnswersByDistributionId" resultType="hashmap">
+	SELECT answers.id,answers.respondent_id,rel.sequence,question,question_types_id,question_options,respondent_answer,answers.questionnaire_distribution_id FROM answers
+	LEFT JOIN rel ON rel.id = answers.rel_id
+	LEFT JOIN questions ON rel.question_id = questions.id
+	WHERE questionnaire_distribution_id = #{distributionId}
+	</select>
+
+	<select id="findRespondent" resultType="hashmap">
+	SELECT * FROM answers WHERE respondent_id = #{respondent}
+	</select>
+
+	<insert id="addAnswer">
+	INSERT INTO answers(respondent_id,rel_id,questionnaire_distribution_id,respondent_answer,create_time) 
+	VALUES(#{respondent},#{relId},#{distributionId},#{answer},#{createTime})
+	</insert>
+	
+	<delete id="deletAnswersByQuestionnaireId">
+	DELETE answers FROM answers LEFT JOIN
+	questionnaire_distribution ON answers.questionnaire_distribution_id = questionnaire_distribution.id
+	WHERE questionnaire_id = #{id}
+	</delete>
+</mapper>

@@ -1,0 +1,22 @@
+/*按钮样式，鼠标效果*/
+button{
+    width: 100px;
+    height: 35px;
+    border: 1px solid rgb(112, 128, 144);
+    border-radius: 5px;
+    background: rgba(248, 248, 255);
+    cursor: pointer;
+    /*按钮下方阴影*/
+    box-shadow: 0 9px #999;
+    margin: 0 30px;
+}
+/*鼠标悬浮按钮改变背景颜色*/
+button:hover{
+    background-color: rgb(227, 227, 235);
+}
+/*鼠标点击改变阴影大小及按钮位置*/
+button:active{
+    background-color: rgb(227, 227, 235);
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}

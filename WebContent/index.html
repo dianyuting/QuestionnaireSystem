@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消费者调研统计平台</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/inputBox.css">
+    <link rel="stylesheet" href="./css/btnStyle.css">
+    <link rel="stylesheet" href="./css/pop-up.css">
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script>
+        //遮罩层的显示和隐藏
+        function display(id){
+            var t = document.getElementById(id);
+            if(t.style.display == "flex"){
+                t.style.display = "none";
+            }else{
+                t.style.display="flex";
+            }
+        }
+    </script>
+    <script src="./js/index.js"></script>
+</head>
+<body>
+    <div class="bg">
+        <!-- 左边文字及图片 -->
+        <div class="img">
+            <div class="fontBg">
+                <p class="font1">用问卷了解世界</p>
+                <p class="font2">用系统提升效率</p>
+            </div>
+        </div>
+        <!-- 右边输入框 -->
+        <div class="loginBg">
+            <fieldset>
+                <img src="./img/a1.png">
+                <div class="inputBox">
+                    <input type="text" class="username" required/>
+                    <span>用户名</span>
+                </div>
+                <div class="inputBox">
+                    <input type="password" class="password" required/>
+                    <span>密码</span>
+                </div>
+                <div class="btn">
+                    <button class="login">登录</button>
+                    <button class="cancel">取消</button>
+                </div>
+                <div class="other">
+                    <span onclick="display('pop-up')">忘记密码</span>|
+                    <span class="register">注册</span>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <!-- 遮罩层 -->
+    <div id="pop-up">
+        <div class="main">
+            <p>请联系管理员重置密码，如有密保可进行信息验证</p>
+            <div>
+                <button onclick="display('pop-up')">确认</button>
+                <button class="forget">信息验证</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

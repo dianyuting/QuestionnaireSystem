@@ -1,0 +1,64 @@
+/*默认样式清空*/
+*{
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    text-decoration: none;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+/*整体背景颜色*/
+.bg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom, #869AF0, #DEE2FF)
+}
+.mianBox{
+    position: relative;
+    width: 70%;
+    height: 70%;
+    background-color: rgba(248, 248, 255);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+}
+/* *符号标红 */
+.emp{
+    color: red;
+    font-weight: bold;
+}
+.selectBox{
+    width: 300px;
+}
+.selectBox select{
+    width: 150px;
+    height: 30px;
+}
+
+.opBox{
+    width: 300px;
+    font-size: 16px;
+    display: none;
+}
+
+.add{
+    user-select: none;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+.options{
+    user-select: none;
+    cursor: pointer;
+}
+
+.inputFufen{
+    display: none;
+}

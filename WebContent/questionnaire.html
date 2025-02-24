@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/mainBg.css"/>
+    <link rel="stylesheet" href="./css/tableStyle.css"/>
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <!-- 二维码生成器插件 -->
+    <script src="./js/jquery.qrcode.min.js"></script>
+    <script src="./js/questionnaire.js"></script>
+    <script src="./js/no.js"></script>
+    <style type="text/css">
+        /* 再次发布的遮罩层，用于选择开始时间和结束时间 */
+        .p{
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255,255,255,.65);
+            position: fixed;
+            top: 0px;
+            right: 0px;
+            display: none;
+        }
+        .p .code{
+            z-index: 4;
+            display: none;
+        }
+        .fb{
+            width: 33%;
+            height: 30%;
+            background: #ebedf6;
+            box-shadow: 5px 5px 5px rgb(117, 124, 158);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg">
+        <div class="top">
+            <div class="inputBox">
+                问卷名：
+                <input type="text" class="qiestionnaireName">
+            </div>
+            <div class="selectBox">
+                用户名：
+                <select class="userSelect">
+                    <option value="volvo">username</option>
+                </select>
+            </div>
+            <div class="buttonBox">
+                <button class="find">查找</button>
+                <button class="create">创建问卷</button>
+                <button class="refresh">刷新</button>
+            </div>
+        </div>
+        <table class="tb" cellspacing="0" cellpadding="0">
+            <thead>
+                <th>问卷名</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>创建用户</th>
+                <th>创建时间</th>
+                <th>操作</th>
+            </thead>
+            <tbody class="resultList">
+                <tr>
+                    <td>a1</td>
+                    <td>2023-5-6</td>
+                    <td>2023-5-8</td>
+                    <td>username</td>
+                    <td>2023-5-5</td>
+                    <td>
+                        <button>问卷分析</button>
+                        <button>再次发布</button>
+                        <button>删除</button>
+                        <button>预览</button>
+                        <button>分享</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>a1</td>
+                    <td>2023-5-6</td>
+                    <td>2023-5-8</td>
+                    <td>username</td>
+                    <td>2023-5-5</td>
+                    <td>
+                        <button>问卷分析</button>
+                        <button>再次发布</button>
+                        <button>删除</button>
+                        <button>预览</button>
+                        <button>分享</button>
+                    </td>
+                </tr>
+            </tbody> 
+        </table>
+        <div class="foot">
+            <div class="page">
+                <div class="prev step-backward">&lt&lt</div>
+                <div class="prev chevron-left">&lt</div>
+                <div class="NUM">
+                    <select class="pageSelect">
+                        <option value="volvo">1</option>
+                    </select>
+                </div>
+                <div class="prev chevron-right">&gt</div>
+                <div class="prev step-forward">&gt&gt</div>
+            </div>
+            <div class="totalpage">
+                <span>总页数：</span>
+                <span class="pageNum">10</span>
+                <span>总条数：</span>
+                <span class="totals">100</span>
+            </div>
+        </div>
+    </div>
+    <div class="p">
+        <div class="code"></div>
+        <div class="fb">
+            <div class="startBox">
+                开始时间：<input type="date" class="startDate"/>
+            </div>
+            <div class="endBox">
+                结束时间：<input type="date" class="endDate"/>
+            </div>
+            <button class="qd">确定</button>
+        </div>
+    </div>
+</body>
+</html>

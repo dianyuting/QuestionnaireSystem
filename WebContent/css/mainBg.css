@@ -1,0 +1,60 @@
+/*默认样式清空*/
+*{
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    text-decoration: none;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+/* 设置背景样式和背景动画 */
+.bg{
+    position: absolute;
+    left: 25px;
+    top: 50px;
+    width: calc(100% - 100px);
+    height: calc(100% - 100px);
+    background-color: #e8ebf6;
+    /* 左边背景图片和右边圆形 */
+    background-image: url("../img/kisspng-survey-methodology-questionnaire-clip-art-superonline-iletisim-hizmetleri-as-5b1cc8723c8719.0481503315286129782479.png"),
+    radial-gradient(circle, rgb(237,222,139) 5px, transparent 0),
+    radial-gradient(circle, #869AF0 16px, transparent 0),
+    radial-gradient(circle, #9aa5d5 18px, transparent 0),
+    radial-gradient(circle, rgb(255, 230, 176), 23px, transparent 0),
+    radial-gradient(circle, rgb(251, 179, 23), 14px, transparent 0),
+    radial-gradient(circle, #869AF0 33px, transparent 0),
+    radial-gradient(circle, #9aa5d5 18px, transparent 0),
+    radial-gradient(circle, rgb(255, 230, 176), 15px, transparent 0),
+    radial-gradient(circle, rgb(251, 179, 23), 25px, transparent 0),
+    radial-gradient(circle, #869AF0 8px, transparent 0),
+    radial-gradient(circle, #9aa5d5 11px, transparent 0),
+    radial-gradient(circle, rgb(255, 230, 176), 16px, transparent 0),
+    radial-gradient(circle, rgb(251, 179, 23), 31px, transparent 0),
+    radial-gradient(circle, rgb(203, 172, 105), 26px, transparent 0);
+    background-repeat: no-repeat;
+    background-size: 35% 40%;
+    background-position: bottom left,100% 77% , 67% 52%, 108% 36%, 84% 12%,114% 69% , 58% 107%, 102% 103%, 108% 112%,91% 60% , 83% 101%, 114% -2%, 123% 47%, 118% 111%, 95% 123%;
+    /* 设置动画 */
+    animation: move 4s linear infinite;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px rgb(117, 124, 158);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+/* 动画具体情况 */
+@keyframes move{
+    0%{
+        background-position: bottom left,100% 77% , 67% 52%, 108% 36%, 84% 12%,114% 69% , 58% 107%, 102% 103%, 108% 112%,91% 60% , 83% 101%, 114% -2%, 123% 47%, 118% 111%, 95% 123%;
+    }
+    50%{
+        background-position: bottom left,98% 80% , 70% 50%, 100% 40%, 80% 10%,110% 72% , 60% 110%, 100% 100%, 110% 110%,87% 56% , 80% 96%, 118% 5%, 120% 50%, 120% 108%, 98% 120%;
+    }
+    100%{
+        background-position: bottom left,100% 77% , 67% 52%, 108% 36%, 84% 12%,114% 69% , 58% 107%, 102% 103%, 108% 112%,91% 60% , 83% 101%, 114% -2%, 123% 47%, 118% 111%, 95% 123%;
+    }
+}
