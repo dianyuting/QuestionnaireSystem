@@ -3,7 +3,7 @@
 主要由登录、问卷列表、题库管理、员工管理、账号安全等部分组成。
 * 该项目采用SSM框架
 * 开发工具：eclipse+VSCode+Navicat<br>
-开发环境：jdk1.8+mysql5+tomcat8.5
+开发环境：jdk1.8+mysql5+tomcat8.5<br>
 ![image](https://github.com/user-attachments/assets/09f87198-03be-4259-bb00-32447e3168b3)
 # 功能模块介绍
 ## 1、系统登录
